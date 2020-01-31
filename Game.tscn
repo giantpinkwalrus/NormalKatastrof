@@ -1,0 +1,194 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/terminal.png" type="Texture" id=3]
+[ext_resource path="res://Terminal.gd" type="Script" id=4]
+[ext_resource path="res://resources/item.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30, 30 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32.0938, 32.6687 )
+
+[node name="Game" type="Node2D"]
+position = Vector2( 728.268, 479.913 )
+
+[node name="Submarine" type="Node2D" parent="."]
+
+[node name="Player" parent="Submarine" instance=ExtResource( 1 )]
+position = Vector2( 7.73175, -63.9132 )
+
+[node name="Floor1" type="Node2D" parent="Submarine"]
+editor/display_folded = true
+position = Vector2( 23.7318, 0 )
+
+[node name="Wall" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+
+[node name="Wall2" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( -298.268, 0 )
+
+[node name="Wall11" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( -358.268, 0.0868225 )
+
+[node name="Wall12" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( -418.268, 0.0868225 )
+
+[node name="Wall13" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( -478.268, 0.0868225 )
+
+[node name="Wall14" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( -538.268, 0.0868225 )
+
+[node name="Wall15" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( -598.268, 0 )
+
+[node name="Wall16" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( -658.268, 0 )
+
+[node name="Wall3" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( -238.268, 0 )
+
+[node name="Wall4" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( -178.268, 0.0868225 )
+
+[node name="Wall5" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( -118.268, 0 )
+
+[node name="Wall6" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( 121.732, 0 )
+
+[node name="Wall9" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( 181.732, 0 )
+
+[node name="Wall7" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( -58.2682, 0 )
+
+[node name="Wall8" parent="Submarine/Floor1" instance=ExtResource( 2 )]
+position = Vector2( 61.7318, 0.0868225 )
+
+[node name="Floor2" type="Node2D" parent="Submarine"]
+editor/display_folded = true
+position = Vector2( 23.7318, -191.913 )
+
+[node name="Wall" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+
+[node name="Wall2" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( -298.268, 0 )
+
+[node name="Wall11" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( -358.268, 0.0868225 )
+
+[node name="Wall12" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( -418.268, 0.0868225 )
+
+[node name="Wall13" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( -478.268, 0.0868225 )
+
+[node name="Wall14" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( -538.268, 0.0868225 )
+
+[node name="Wall15" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( -598.268, 0 )
+
+[node name="Wall16" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( -658.268, 0 )
+
+[node name="Wall3" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( -238.268, 0 )
+
+[node name="Wall4" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( -178.268, 0.0868225 )
+
+[node name="Wall5" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( -118.268, 0 )
+
+[node name="Wall6" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( 121.732, 0 )
+
+[node name="Wall9" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( 181.732, 0 )
+
+[node name="Wall7" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( -58.2682, 0 )
+
+[node name="Wall8" parent="Submarine/Floor2" instance=ExtResource( 2 )]
+position = Vector2( 61.7318, 0.0868225 )
+
+[node name="Terminal" type="Sprite" parent="Submarine"]
+editor/display_folded = true
+position = Vector2( -268.285, -63.9132 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Submarine/Terminal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine/Terminal/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Item" type="RigidBody2D" parent="Submarine"]
+editor/display_folded = true
+position = Vector2( -122.012, -119.733 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Submarine/Item"]
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine/Item"]
+shape = SubResource( 2 )
+
+[node name="Sub_Wall" type="Node2D" parent="Submarine"]
+editor/display_folded = true
+position = Vector2( -696.268, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Wall" parent="Submarine/Sub_Wall" instance=ExtResource( 2 )]
+
+[node name="Wall2" parent="Submarine/Sub_Wall" instance=ExtResource( 2 )]
+position = Vector2( 0, -63.9132 )
+
+[node name="Wall3" parent="Submarine/Sub_Wall" instance=ExtResource( 2 )]
+position = Vector2( 0, -127.913 )
+
+[node name="Wall4" parent="Submarine/Sub_Wall" instance=ExtResource( 2 )]
+position = Vector2( 0, -191.913 )
+
+[node name="Wall5" parent="Submarine/Sub_Wall" instance=ExtResource( 2 )]
+position = Vector2( 0, -255.913 )
+
+[node name="Wall6" parent="Submarine/Sub_Wall" instance=ExtResource( 2 )]
+position = Vector2( 0, -319.913 )
+
+[node name="Sub_Wall2" type="Node2D" parent="Submarine"]
+editor/display_folded = true
+position = Vector2( 263.732, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Wall" parent="Submarine/Sub_Wall2" instance=ExtResource( 2 )]
+
+[node name="Wall2" parent="Submarine/Sub_Wall2" instance=ExtResource( 2 )]
+position = Vector2( 0, -63.9132 )
+
+[node name="Wall3" parent="Submarine/Sub_Wall2" instance=ExtResource( 2 )]
+position = Vector2( 0, -127.913 )
+
+[node name="Wall4" parent="Submarine/Sub_Wall2" instance=ExtResource( 2 )]
+position = Vector2( 0, -191.913 )
+
+[node name="Wall5" parent="Submarine/Sub_Wall2" instance=ExtResource( 2 )]
+position = Vector2( 0, -255.913 )
+
+[node name="Wall6" parent="Submarine/Sub_Wall2" instance=ExtResource( 2 )]
+position = Vector2( 0, -319.913 )
+
+[node name="Ladder" type="Node2D" parent="Submarine"]
