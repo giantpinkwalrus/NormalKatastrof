@@ -7,10 +7,10 @@
 [ext_resource path="res://resources/Ladder.png" type="Texture" id=5]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=6]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.0938, 32.6687 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 30 )
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -41,10 +41,9 @@ __meta__ = {
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine/Item"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Terminal" type="Sprite" parent="Submarine"]
-editor/display_folded = true
 position = Vector2( -268.285, -63.9132 )
 z_index = 2
 texture = ExtResource( 3 )
@@ -54,9 +53,11 @@ __meta__ = {
 }
 
 [node name="Area2D" type="Area2D" parent="Submarine/Terminal"]
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine/Terminal/Area2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Ladder" type="Node2D" parent="Submarine"]
 position = Vector2( -440.268, -63.9132 )

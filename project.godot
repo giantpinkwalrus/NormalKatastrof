@@ -19,6 +19,10 @@ config/name="Normal Katastrof"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [input]
 
 p1_left={
@@ -57,6 +61,7 @@ p1_drop={
 2d_physics/layer_1="walls"
 2d_physics/layer_2="player"
 2d_physics/layer_3="objects"
+2d_physics/layer_4="terminals"
 
 [rendering]
 

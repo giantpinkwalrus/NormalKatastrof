@@ -21,6 +21,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
@@ -32,7 +33,3 @@ cast_to = Vector2( 35, 0 )
 [node name="RayLeft" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( -35, 0 )
-
-[node name="RayTop" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( 33, -32 )

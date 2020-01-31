@@ -8,14 +8,21 @@ export var SPEED : int = 10000
 export var CLIMB_SPEED : int = 10000
 export var GRAVITY : int = 1000
 var velocity = Vector2();
-var player = ""
+var player = "p1_"
+onready var Swoosh = preload("res://Swoosh.tscn")
 
 enum STATE {
 	CLIMBING,
 	RUNNING
 }
 
+enum DIR {
+	LEFT = -1,
+	RIGHT = 1
+}
+
 var state = STATE.RUNNING
+var facing = DIR.LEFT;
 var item = null
 
 var on_ladder : bool = false
@@ -26,14 +33,26 @@ func _init():
 	else:
 		player = "p2_"
 
+func instatiate_swoosh():
+	var s = Swoosh.instance()
+	s.scale.x = facing * 1.5
+	s.scale.y = 0.75
+	s.position.x = s.position.x + 20 * facing
+	add_child(s)
+	pass
+
+func handle_swoosh_collision(area):
+	print(area)
 
 func get_input():
 	if state == STATE.RUNNING:
 		#NORMAL
 		if Input.is_action_pressed(player + "left"):
 			velocity.x = -SPEED
+			facing = DIR.LEFT
 		elif Input.is_action_pressed(player + "right"):
 			velocity.x = SPEED
+			facing = DIR.RIGHT
 		else:
 			velocity.x = 0
 		if Input.is_action_pressed(player + "down") or Input.is_action_pressed(player + "up") and on_ladder:
@@ -41,6 +60,9 @@ func get_input():
 			velocity.y = 0
 		else:
 			velocity.y += GRAVITY
+		if Input.is_action_just_pressed(player + "action"):
+			print("swoosh")
+			instatiate_swoosh()
 	else:
 		#LADDER
 		if Input.is_action_pressed(player + "up"):
@@ -51,8 +73,10 @@ func get_input():
 			velocity.y = 0
 		if Input.is_action_pressed(player + "left") and $RayLeft.is_colliding() == false:
 			state = STATE.RUNNING
+			facing = DIR.LEFT
 		elif Input.is_action_pressed(player + "right") and !$RayRight.is_colliding():
 			state = STATE.RUNNING
+			facing = DIR.RIGHT
 
 func handle_climbing():
 	if state == STATE.CLIMBING:
