@@ -10,3 +10,7 @@ func _ready():
 
 func action():
 	$PercentageDecay.action()
+	
+func _process(delta):
+	if $Terminal.is_broken():
+		$PercentageDecay.set_percentage(0)

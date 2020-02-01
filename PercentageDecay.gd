@@ -19,5 +19,8 @@ func _ready():
 func decay():
 	current_percentage = clamp(current_percentage - decay_rate, 0, 100)
 	
+func set_percentage(perc):
+	current_percentage = perc
+	
 func _on_Timer_timeout():
 	decay()
