@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ja_znaju_tavarits.wav-e997472a0501283c0975bada7fb1ba1c.sample"
+
+[deps]
+
+source_file="res://resources/ja_znaju_tavarits.wav"
+dest_files=[ "res://.import/ja_znaju_tavarits.wav-e997472a0501283c0975bada7fb1ba1c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

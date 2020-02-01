@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cyka_blyat.wav-0aa4bd774115c7a4bbba05261e860684.sample"
+
+[deps]
+
+source_file="res://resources/cyka_blyat.wav"
+dest_files=[ "res://.import/cyka_blyat.wav-0aa4bd774115c7a4bbba05261e860684.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
