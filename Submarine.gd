@@ -3,9 +3,10 @@ extends Node2D
 var damage = 0
 export var max_fire_chance = 0.5
 export var min_fire_chance = 0.95
-var fires_top = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-var fires_bot = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+var fires_top = [0, 0, 0, 0, 0, 0, 0]
+var fires_bot = [0, 0, 0, 0, 0, 0, 0]
 var fires = [fires_top, fires_bot];
+onready var Fire = preload("res://Fire.tscn")
 
 func _ready():
 	randomize()
@@ -14,6 +15,8 @@ func spawn_fire():
 	var free_spots = get_free_fire()
 	var spot = free_spots[randi() % free_spots.size()];
 	fires[spot.y][spot.x] = 1
+	var fire = Fire.instance()
+	$Fires.get_node(String(spot.x) + "_" + String(spot.y)).add_child(fire)
 
 func get_free_fire():
 	var free = Array()
