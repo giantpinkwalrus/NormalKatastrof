@@ -10,6 +10,12 @@ func _ready():
 
 func action():
 	$PercentageDecay.action()
+
+func get_weight():
+	return $PercentageDecay.current_percentage / 100
+
+func is_broken():
+	return $Terminal.is_broken()
 	
 func _process(delta):
 	if $Terminal.is_broken():
