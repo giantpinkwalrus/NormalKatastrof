@@ -113,7 +113,7 @@ func handle_hammer_swing():
 	if facing == DIR.LEFT and $UseItemLeft.is_colliding():
 		($UseItemLeft as RayCast2D).get_collider().owner.fix()
 	if facing == DIR.RIGHT and $UseItemRight.is_colliding():
-		($UseItemLeft as RayCast2D).get_collider().owner.fix()
+		($UseItemRight as RayCast2D).get_collider().owner.fix()
 func chuck_hammer():
 	item = null
 	$Carry.remove_child(hammer)
