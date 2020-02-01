@@ -3,6 +3,7 @@ extends Node2D
 export var decay_rate : float = 2.5
 export var fill_rate : float = 25
 export var decay_tick : float = 1
+export var disabled : bool = false
 var current_percentage = 100;
 
 
@@ -17,7 +18,8 @@ func _ready():
 	($Timer as Timer).start(decay_tick)
 
 func decay():
-	current_percentage = clamp(current_percentage - decay_rate, 0, 100)
+	if !disabled:
+		current_percentage = clamp(current_percentage - decay_rate, 0, 100)
 	
 func set_percentage(perc):
 	current_percentage = perc
