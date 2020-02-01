@@ -40,3 +40,15 @@ func _on_FireTimer_timeout():
 	print(lerp(min_fire_chance, max_fire_chance, damage))
 	if(f > lerp(min_fire_chance, max_fire_chance, damage)):
 		spawn_fire()
+
+func damage_ship(amount = 0.01):
+	damage += amount
+
+func _on_Ballasts_left_ballast_broken():
+	damage_ship()
+
+func _on_Ballasts_right_ballast_broken():
+	damage_ship()
+
+func _on_Engine_engine_broken():
+	damage_ship()

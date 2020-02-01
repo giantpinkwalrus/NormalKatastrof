@@ -5,6 +5,8 @@ extends Node2D
 # var b = "text"
 
 signal balance_change
+signal left_ballast_broken
+signal right_ballast_broken
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,3 +30,10 @@ func action(side : Sprite):
 		$LeftBallast/LeftBalance.lower()
 		$RightBallast/RightBalance.higher()
 	emit_signal("balance_change")
+
+
+func _on_LeftBallast_part_broken():
+	emit_signal("left_ballast_broken")
+
+func _on_RightBallast_part_broken():
+	emit_signal("right_ballast_broken")

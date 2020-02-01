@@ -16,3 +16,5 @@ position = Vector2( -416, 0 )
 position = Vector2( 416, 0 )
 
 [node name="RightBalance" parent="RightBallast" instance=ExtResource( 3 )]
+[connection signal="part_broken" from="LeftBallast" to="." method="_on_LeftBallast_part_broken"]
+[connection signal="part_broken" from="RightBallast" to="." method="_on_RightBallast_part_broken"]

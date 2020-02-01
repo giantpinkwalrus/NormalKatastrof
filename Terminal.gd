@@ -7,6 +7,7 @@ export var kick_degradation = 15
 export var time_degradation = 5
 export var tick_time : float = 5
 var current_health = max_health
+signal part_broken
 
 
 export(int, "Torpedo", "Periscope", "Water", "Engine", "Sonar", "Ballast Front", "Ballast Back") var terminal_type
@@ -19,7 +20,7 @@ func kick(_non):
 	owner.action(self)
 
 func fix():
-	damage(repair_rate)
+	current_health = clamp(current_health + repair_rate, 0, max_health)
 
 func is_broken():
 	return current_health == 0
@@ -29,7 +30,10 @@ func _process(_delta):
 	$HealthBar.value = float(current_health) / float(max_health) * 100
 
 func damage(amount):
+	if is_broken():
+		return
 	current_health = clamp(current_health + amount, 0, max_health)
+	emit_signal("part_broken")
 
 func _on_DamageTimer_timeout():
 	damage(-time_degradation)
