@@ -28,7 +28,7 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Player" parent="Submarine" instance=ExtResource( 3 )]
-position = Vector2( -24.268, -79.913 )
+position = Vector2( -344.268, -79.913 )
 z_index = 5
 collision_mask = 17
 
@@ -65,7 +65,6 @@ texture = ExtResource( 6 )
 [node name="LadderCollision" type="Area2D" parent="Submarine/Ladder" groups=[
 "ladder",
 ]]
-visible = false
 position = Vector2( 0, -96 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine/Ladder/LadderCollision"]
