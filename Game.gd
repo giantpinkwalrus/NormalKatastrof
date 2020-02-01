@@ -1,7 +1,7 @@
 extends Node2D
 
 
-export var target_km : float = 10000;
+export var target_km : float = 5000;
 var current_km : float = 0
 export var max_travel_speed : float = 10
 export var min_travel_speed : float = 1

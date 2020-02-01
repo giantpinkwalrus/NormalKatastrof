@@ -15,7 +15,6 @@ func _ready():
 
 func _on_Timer_timeout():
 	queue_free()
-	#get_parent().remove_child(self)
 
 func _on_Area2D_area_entered(area):
 	get_parent().handle_swoosh_collision(area)

@@ -80,9 +80,9 @@ func get_input():
 
 func handle_climbing():
 	if state == STATE.CLIMBING:
-		set_collision_mask_bit(0, 0)
+		set_collision_mask_bit(4, 0)
 	else:
-		set_collision_mask_bit(0, 1)
+		set_collision_mask_bit(4, 1)
 
 func _physics_process(delta):
 	get_input()
