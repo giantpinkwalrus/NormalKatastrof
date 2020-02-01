@@ -8,7 +8,7 @@ extends Node2D
 func _ready():
 	pass # Replace with function body.
 
-func action(n):
+func action(_n):
 	$PercentageDecay.action()
 
 func get_weight():
@@ -17,6 +17,6 @@ func get_weight():
 func is_broken():
 	return $Terminal.is_broken()
 	
-func _process(delta):
+func _process(_delta):
 	if $Terminal.is_broken():
 		$PercentageDecay.set_percentage(0)

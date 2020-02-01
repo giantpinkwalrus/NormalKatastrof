@@ -7,7 +7,7 @@ var current_percentage = 100;
 
 
 # Called when the node enters the scene tree for the first time.
-func _process(delta):
+func _process(_delta):
 	$Power.value = current_percentage
 
 func action():

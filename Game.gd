@@ -22,4 +22,4 @@ func _process(delta):
 	var speed = lerp(min_travel_speed, max_travel_speed, $Submarine/Engine.get_weight());
 	current_km += speed * delta
 	if current_km >= target_km:
-		get_tree().change_scene("res://Victory.tscn")
+		var _foo = get_tree().change_scene("res://Victory.tscn")

@@ -3,7 +3,7 @@
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Submarine.gd" type="Script" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Item.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hammer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Ladder.gd" type="Script" id=5]
 [ext_resource path="res://resources/Ladder.png" type="Texture" id=6]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=7]
@@ -32,9 +32,13 @@ position = Vector2( -344.268, -79.913 )
 z_index = 5
 collision_mask = 17
 
-[node name="Item" parent="Submarine" instance=ExtResource( 4 )]
-position = Vector2( -122.012, -263.733 )
-collision_mask = 19
+[node name="Player2" parent="Submarine" instance=ExtResource( 3 )]
+position = Vector2( -94.017, -256.898 )
+z_index = 5
+controller = 1
+
+[node name="Hammer" parent="Submarine" instance=ExtResource( 4 )]
+position = Vector2( -250.012, -87.733 )
 
 [node name="Ladder" type="KinematicBody2D" parent="Submarine"]
 position = Vector2( -440.268, -63.9132 )
@@ -75,7 +79,7 @@ position = Vector2( 0, -96 )
 shape = SubResource( 2 )
 
 [node name="Walls and Floors" type="Node2D" parent="Submarine"]
-position = Vector2( 0, 0.0870056 )
+position = Vector2( -0.268005, 1.08701 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -100,6 +104,9 @@ position = Vector2( 0, -255.913 )
 [node name="Wall6" parent="Submarine/Walls and Floors/Sub_Wall2" instance=ExtResource( 7 )]
 position = Vector2( 0, -319.913 )
 
+[node name="Wall7" parent="Submarine/Walls and Floors/Sub_Wall2" instance=ExtResource( 7 )]
+position = Vector2( 0, -383.913 )
+
 [node name="Sub_Wall" type="Node2D" parent="Submarine/Walls and Floors"]
 position = Vector2( -696.268, 0 )
 
@@ -119,6 +126,9 @@ position = Vector2( 0, -255.913 )
 
 [node name="Wall6" parent="Submarine/Walls and Floors/Sub_Wall" instance=ExtResource( 7 )]
 position = Vector2( 0, -319.913 )
+
+[node name="Wall7" parent="Submarine/Walls and Floors/Sub_Wall" instance=ExtResource( 7 )]
+position = Vector2( 0, -383.913 )
 
 [node name="Floor2" type="Node2D" parent="Submarine/Walls and Floors"]
 position = Vector2( 23.7318, -191.913 )
@@ -216,7 +226,10 @@ position = Vector2( -58.2682, 0 )
 position = Vector2( 61.7318, 0.0868225 )
 
 [node name="Floor3" type="Node2D" parent="Submarine/Walls and Floors"]
-position = Vector2( 23.7318, -384 )
+position = Vector2( 23.7318, -449 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Wall" parent="Submarine/Walls and Floors/Floor3" instance=ExtResource( 7 )]
 
@@ -303,6 +316,58 @@ margin_left = -517.0
 margin_top = 289.0
 margin_right = 510.0
 margin_bottom = 337.0
+
+[node name="Fires" type="Node2D" parent="Submarine"]
+position = Vector2( -216.268, -254.913 )
+
+[node name="0_0" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( -344, -3 )
+
+[node name="1_0" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( -234, -1 )
+
+[node name="2_0" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( -130, -6 )
+
+[node name="3_0" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( -10, -4 )
+
+[node name="4_0" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( 95, -4 )
+
+[node name="5_0" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( 206, -7 )
+
+[node name="6_0" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( 311, -10 )
+
+[node name="0_1" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( -330, 195 )
+
+[node name="1_1" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( -220, 197 )
+
+[node name="2_1" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( -116, 192 )
+
+[node name="3_1" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( 4, 194 )
+
+[node name="4_1" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( 109, 194 )
+
+[node name="5_1" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( 220, 191 )
+
+[node name="6_1" type="Node2D" parent="Submarine/Fires"]
+position = Vector2( 325, 188 )
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
 [connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_entered"]
+[connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_entered"]
 [connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_exited"]
+[connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_exited"]
 [connection signal="balance_change" from="Submarine/Ballasts" to="Submarine" method="_on_Ballasts_balance_change"]
+[connection signal="timeout" from="FireTimer" to="Submarine" method="_on_FireTimer_timeout"]
