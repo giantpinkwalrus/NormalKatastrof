@@ -16,7 +16,7 @@ func _ready():
 
 func kick():
 	damage(-kick_degradation)
-	owner.action()
+	owner.action(self)
 
 func fix():
 	damage(repair_rate)

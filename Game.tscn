@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/item.png" type="Texture" id=2]
 [ext_resource path="res://resources/Ladder.png" type="Texture" id=3]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Engine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Ballasts.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.0938, 32.6687 )
@@ -215,6 +216,9 @@ position = Vector2( -58.2682, 0 )
 position = Vector2( 61.7318, 0.0868225 )
 
 [node name="Engine" parent="Submarine" instance=ExtResource( 5 )]
-position = Vector2( -280.268, -63.913 )
+position = Vector2( -632.268, -63.913 )
+
+[node name="Ballasts" parent="Submarine" instance=ExtResource( 6 )]
+position = Vector2( -216.268, -255.913 )
 [connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_entered"]
 [connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_exited"]
