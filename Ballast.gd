@@ -9,6 +9,8 @@ func _ready():
 	pass # Replace with function body.
 
 func action(side : Sprite):
+	if(side.is_broken()):
+		return
 	if side.name == "LeftBallast":
 		$LeftBallast/LeftBalance.higher()
 		$RightBallast/RightBalance.lower()
