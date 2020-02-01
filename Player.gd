@@ -1,8 +1,5 @@
 extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export(int, "Player 1", "Player 2") var controller
 export var SPEED : int = 10000
 export var CLIMB_SPEED : int = 10000
@@ -12,6 +9,9 @@ var player = "p1_"
 onready var Swoosh = preload("res://Swoosh.tscn")
 onready var CarryHammer = preload("res://CarryHammer.tscn")
 onready var Hammer = preload("res://Hammer.tscn")
+
+onready var Char1 = preload("res://resources/char1.png")
+onready var Char2 = preload("res://resources/char2.png")
 
 enum STATE {
 	CLIMBING,
@@ -38,8 +38,12 @@ var on_ladder : bool = false
 func _ready():
 	if controller == 0:
 		player = "p1_"
+		$PlayerSprite.texture = Char1
 	else:
 		player = "p2_"
+		$PlayerSprite.texture = Char2
+	$PlayerSprite.position.y = -13
+	$PlayerSprite.scale = Vector2(0.092, 0.092);
 
 func instatiate_swoosh():
 	var s = Swoosh.instance()
@@ -58,7 +62,6 @@ func carry_hammer():
 	$Carry.add_child(hammer)
 
 func get_input():
-	print(Input.is_action_pressed("p2_up"))
 	if state == STATE.RUNNING:
 		#NORMAL
 		if Input.is_action_pressed(player + "left"):
@@ -107,9 +110,10 @@ func handle_hammer_swing():
 		chuck_hammer()
 	if facing == DIR.RIGHT and !$UseItemRight.is_colliding():
 		chuck_hammer()
-	
-	pass
-
+	if facing == DIR.LEFT and $UseItemLeft.is_colliding():
+		($UseItemLeft as RayCast2D).get_collider().owner.fix()
+	if facing == DIR.RIGHT and $UseItemRight.is_colliding():
+		($UseItemLeft as RayCast2D).get_collider().owner.fix()
 func chuck_hammer():
 	item = null
 	$Carry.remove_child(hammer)
