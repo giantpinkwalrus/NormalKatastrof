@@ -16,3 +16,5 @@ func _ready():
 func _on_Ballasts_balance_change():
 	var balance = $Ballasts.get_balance()
 	$Ladder.set_balance(balance)
+	#@TODO: animation
+	$SceneCamera.rotation_degrees = 22 * -balance

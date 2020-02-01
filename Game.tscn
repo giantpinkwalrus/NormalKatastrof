@@ -264,6 +264,12 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine/LadderCollider2"]
 position = Vector2( 0, -128 )
 shape = SubResource( 4 )
+
+[node name="SceneCamera" type="Camera2D" parent="Submarine"]
+position = Vector2( -213, -177 )
+rotating = true
+current = true
+zoom = Vector2( 1.25, 1.25 )
 [connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_entered"]
 [connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_exited"]
 [connection signal="balance_change" from="Submarine/Ballasts" to="Submarine" method="_on_Ballasts_balance_change"]
