@@ -3,7 +3,7 @@
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Submarine.gd" type="Script" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Item.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hammer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Ladder.gd" type="Script" id=5]
 [ext_resource path="res://resources/Ladder.png" type="Texture" id=6]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=7]
@@ -32,8 +32,8 @@ position = Vector2( -344.268, -79.913 )
 z_index = 5
 collision_mask = 17
 
-[node name="Item" parent="Submarine" instance=ExtResource( 4 )]
-position = Vector2( -122.012, -263.733 )
+[node name="Hammer" parent="Submarine" instance=ExtResource( 4 )]
+position = Vector2( -250.012, -87.733 )
 collision_mask = 19
 
 [node name="Ladder" type="KinematicBody2D" parent="Submarine"]
@@ -75,7 +75,7 @@ position = Vector2( 0, -96 )
 shape = SubResource( 2 )
 
 [node name="Walls and Floors" type="Node2D" parent="Submarine"]
-position = Vector2( 0, 0.0870056 )
+position = Vector2( -0.268005, 1.08701 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -100,6 +100,9 @@ position = Vector2( 0, -255.913 )
 [node name="Wall6" parent="Submarine/Walls and Floors/Sub_Wall2" instance=ExtResource( 7 )]
 position = Vector2( 0, -319.913 )
 
+[node name="Wall7" parent="Submarine/Walls and Floors/Sub_Wall2" instance=ExtResource( 7 )]
+position = Vector2( 0, -383.913 )
+
 [node name="Sub_Wall" type="Node2D" parent="Submarine/Walls and Floors"]
 position = Vector2( -696.268, 0 )
 
@@ -119,6 +122,9 @@ position = Vector2( 0, -255.913 )
 
 [node name="Wall6" parent="Submarine/Walls and Floors/Sub_Wall" instance=ExtResource( 7 )]
 position = Vector2( 0, -319.913 )
+
+[node name="Wall7" parent="Submarine/Walls and Floors/Sub_Wall" instance=ExtResource( 7 )]
+position = Vector2( 0, -383.913 )
 
 [node name="Floor2" type="Node2D" parent="Submarine/Walls and Floors"]
 position = Vector2( 23.7318, -191.913 )
@@ -216,7 +222,10 @@ position = Vector2( -58.2682, 0 )
 position = Vector2( 61.7318, 0.0868225 )
 
 [node name="Floor3" type="Node2D" parent="Submarine/Walls and Floors"]
-position = Vector2( 23.7318, -384 )
+position = Vector2( 23.7318, -449 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Wall" parent="Submarine/Walls and Floors/Floor3" instance=ExtResource( 7 )]
 

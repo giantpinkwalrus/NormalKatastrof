@@ -34,3 +34,6 @@ collision_mask = 17
 enabled = true
 cast_to = Vector2( -35, 0 )
 collision_mask = 17
+
+[node name="Carry" type="Node2D" parent="."]
+position = Vector2( -35, -13.839 )

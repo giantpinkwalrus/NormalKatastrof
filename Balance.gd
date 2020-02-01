@@ -9,7 +9,7 @@ enum LEVEL {
 
 var current_level = 1;
 
-func _process(delta):
+func _process(_delta):
 	$Label.text = String(current_level)
 
 func lower():

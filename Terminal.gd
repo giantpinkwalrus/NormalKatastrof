@@ -14,7 +14,7 @@ export(int, "Torpedo", "Periscope", "Water", "Engine", "Sonar", "Ballast Front",
 func _ready():
 	$DamageTimer.start(tick_time)
 
-func kick():
+func kick(_non):
 	damage(-kick_degradation)
 	owner.action(self)
 
@@ -25,7 +25,7 @@ func is_broken():
 	return current_health == 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	$HealthBar.value = float(current_health) / float(max_health) * 100
 
 func damage(amount):

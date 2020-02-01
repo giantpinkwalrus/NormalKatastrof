@@ -10,6 +10,7 @@ export var GRAVITY : int = 1000
 var velocity = Vector2();
 var player = "p1_"
 onready var Swoosh = preload("res://Swoosh.tscn")
+onready var CarryHammer = preload("res://CarryHammer.tscn")
 
 enum STATE {
 	CLIMBING,
@@ -21,9 +22,15 @@ enum DIR {
 	RIGHT = 1
 }
 
+enum ITEM {
+	HAMMER,
+	HOSE
+}
+
 var state = STATE.RUNNING
 var facing = DIR.LEFT;
 var item = null
+var hammer = null
 
 var on_ladder : bool = false
 
@@ -42,7 +49,12 @@ func instatiate_swoosh():
 	pass
 
 func handle_swoosh_collision(area : Area2D):
-	area.get_owner().kick()
+	area.get_owner().kick(self)
+
+func carry_hammer():
+	item = ITEM.HAMMER
+	hammer = CarryHammer.instance()
+	$Carry.add_child(hammer)
 
 func get_input():
 	if state == STATE.RUNNING:
@@ -61,7 +73,6 @@ func get_input():
 		else:
 			velocity.y += GRAVITY
 		if Input.is_action_just_pressed(player + "action"):
-			print("swoosh")
 			instatiate_swoosh()
 	else:
 		#LADDER
@@ -84,17 +95,29 @@ func handle_climbing():
 	else:
 		set_collision_mask_bit(4, 1)
 
+func set_carry_point():
+	if facing == -1:
+		$Carry.position = Vector2(-35, $Carry.position.y)
+		if item == ITEM.HAMMER and hammer:
+			hammer.rotation = 18
+	else:
+		$Carry.position = Vector2(35, $Carry.position.y)
+		if item == ITEM.HAMMER and hammer:
+			hammer.rotation = -18
+
+
 func _physics_process(delta):
 	get_input()
 	handle_climbing()
+	set_carry_point()
 	if state == STATE.CLIMBING:
 		velocity.x = 0
 		self.position = Vector2(get_node("../Ladder").position.x, position.y)
-	move_and_slide(velocity * delta)
+	var _s = move_and_slide(velocity * delta)
 
-func _on_LadderCollision_area_entered(area):
+func _on_LadderCollision_area_entered(_area):
 	on_ladder = true
 
-func _on_LadderCollision_area_exited(area):
+func _on_LadderCollision_area_exited(_area):
 	on_ladder = false
 	state = STATE.RUNNING
