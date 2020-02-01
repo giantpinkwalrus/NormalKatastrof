@@ -19,9 +19,9 @@ config/name="Normal Katastrof"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
-[debug]
+[display]
 
-settings/stdout/print_fps=true
+window/size/resizable=false
 
 [input]
 
@@ -67,4 +67,6 @@ p1_drop={
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
 environment/default_environment="res://default_env.tres"
