@@ -16,9 +16,13 @@ func _ready():
 
 func kick():
 	damage(-kick_degradation)
+	owner.action()
 
 func fix():
 	damage(repair_rate)
+
+func is_broken():
+	return current_health == 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
