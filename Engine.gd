@@ -8,7 +8,7 @@ extends Node2D
 func _ready():
 	pass # Replace with function body.
 
-func action():
+func action(n):
 	$PercentageDecay.action()
 
 func get_weight():
