@@ -34,7 +34,6 @@ collision_mask = 17
 
 [node name="Hammer" parent="Submarine" instance=ExtResource( 4 )]
 position = Vector2( -250.012, -87.733 )
-collision_mask = 19
 
 [node name="Ladder" type="KinematicBody2D" parent="Submarine"]
 position = Vector2( -440.268, -63.9132 )
@@ -312,6 +311,12 @@ margin_left = -517.0
 margin_top = 289.0
 margin_right = 510.0
 margin_bottom = 337.0
+
+[node name="Player2" parent="Submarine" instance=ExtResource( 3 )]
+z_index = 5
+controller = 1
+[connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_entered"]
 [connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_entered"]
+[connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_exited"]
 [connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_exited"]
 [connection signal="balance_change" from="Submarine/Ballasts" to="Submarine" method="_on_Ballasts_balance_change"]

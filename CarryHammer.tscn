@@ -4,5 +4,5 @@
 
 [node name="CarryHammer" type="Sprite"]
 rotation = 0.314159
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 1 )

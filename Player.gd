@@ -11,6 +11,7 @@ var velocity = Vector2();
 var player = "p1_"
 onready var Swoosh = preload("res://Swoosh.tscn")
 onready var CarryHammer = preload("res://CarryHammer.tscn")
+onready var Hammer = preload("res://Hammer.tscn")
 
 enum STATE {
 	CLIMBING,
@@ -34,7 +35,7 @@ var hammer = null
 
 var on_ladder : bool = false
 
-func _init():
+func _ready():
 	if controller == 0:
 		player = "p1_"
 	else:
@@ -57,6 +58,7 @@ func carry_hammer():
 	$Carry.add_child(hammer)
 
 func get_input():
+	print(Input.is_action_pressed("p2_up"))
 	if state == STATE.RUNNING:
 		#NORMAL
 		if Input.is_action_pressed(player + "left"):
@@ -73,7 +75,12 @@ func get_input():
 		else:
 			velocity.y += GRAVITY
 		if Input.is_action_just_pressed(player + "action"):
-			instatiate_swoosh()
+			if item == null:
+				instatiate_swoosh()
+			elif item == ITEM.HAMMER:
+				handle_hammer_swing()
+			elif item == ITEM.HOSE:
+				chuck_hose()
 	else:
 		#LADDER
 		if Input.is_action_pressed(player + "up"):
@@ -94,6 +101,26 @@ func handle_climbing():
 		set_collision_mask_bit(4, 0)
 	else:
 		set_collision_mask_bit(4, 1)
+
+func handle_hammer_swing():
+	if facing == DIR.LEFT and !$UseItemLeft.is_colliding():
+		chuck_hammer()
+	if facing == DIR.RIGHT and !$UseItemRight.is_colliding():
+		chuck_hammer()
+	
+	pass
+
+func chuck_hammer():
+	item = null
+	$Carry.remove_child(hammer)
+	hammer = null
+	var hammer_phys = Hammer.instance()
+	hammer_phys.position = Vector2(facing * 64 + position.x, position.y)
+	hammer_phys.apply_central_impulse(Vector2(facing * 500, -500))
+	self.get_parent().add_child(hammer_phys)
+
+func chuck_hose():
+	pass
 
 func set_carry_point():
 	if facing == -1:
