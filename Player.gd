@@ -41,8 +41,8 @@ func instatiate_swoosh():
 	add_child(s)
 	pass
 
-func handle_swoosh_collision(area):
-	print(area)
+func handle_swoosh_collision(area : Area2D):
+	area.get_owner().kick()
 
 func get_input():
 	if state == STATE.RUNNING:

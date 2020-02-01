@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/terminal.png" type="Texture" id=1]
+[ext_resource path="res://Terminal.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30, 30 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.243137, 0.882353, 0.133333, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.898039, 0.168627, 0.0470588, 1 )
+
+[node name="Terminal" type="Sprite"]
+z_index = 2
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="DamageTimer" type="Timer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = -32.0
+margin_top = -48.0
+margin_right = 32.0
+margin_bottom = -34.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+value = 100.0
+percent_visible = false
+[connection signal="timeout" from="DamageTimer" to="." method="_on_DamageTimer_timeout"]
