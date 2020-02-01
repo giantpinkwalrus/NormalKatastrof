@@ -9,7 +9,7 @@ signal engine_broken
 func _ready():
 	pass # Replace with function body.
 
-func action(_n):
+func action(_n, _p):
 	$PercentageDecay.action()
 
 func get_weight():

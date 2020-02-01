@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Submarine.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://MidLevel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Engine.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Ballasts.tscn" type="PackedScene" id=10]
+[ext_resource path="res://H20.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48, 128 )
@@ -363,13 +364,16 @@ position = Vector2( 220, 191 )
 [node name="6_1" type="Node2D" parent="Submarine/Fires"]
 position = Vector2( 325, 188 )
 
+[node name="H20" parent="Submarine" instance=ExtResource( 11 )]
+position = Vector2( -272, -255 )
+
 [node name="FireTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
-[connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_entered"]
 [connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_entered"]
-[connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_exited"]
+[connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_entered"]
 [connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_exited"]
+[connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_exited"]
 [connection signal="engine_broken" from="Submarine/Engine" to="Submarine" method="_on_Engine_engine_broken"]
 [connection signal="balance_change" from="Submarine/Ballasts" to="Submarine" method="_on_Ballasts_balance_change"]
 [connection signal="left_ballast_broken" from="Submarine/Ballasts" to="Submarine" method="_on_Ballasts_left_ballast_broken"]

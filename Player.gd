@@ -8,6 +8,7 @@ var velocity = Vector2();
 var player = "p1_"
 onready var Swoosh = preload("res://Swoosh.tscn")
 onready var CarryHammer = preload("res://CarryHammer.tscn")
+onready var CarryHose = preload("res://CarryHose.tscn")
 onready var Hammer = preload("res://Hammer.tscn")
 
 onready var Char1 = preload("res://resources/char1.png")
@@ -32,6 +33,7 @@ var state = STATE.RUNNING
 var facing = DIR.LEFT;
 var item = null
 var hammer = null
+var hose = null
 
 var on_ladder : bool = false
 
@@ -60,6 +62,11 @@ func carry_hammer():
 	item = ITEM.HAMMER
 	hammer = CarryHammer.instance()
 	$Carry.add_child(hammer)
+
+func carry_hose():
+	item = ITEM.HOSE
+	hose = CarryHose.instance()
+	$Carry.add_child(hose)
 
 func get_input():
 	if state == STATE.RUNNING:
@@ -124,18 +131,24 @@ func chuck_hammer():
 	self.get_parent().add_child(hammer_phys)
 
 func chuck_hose():
-	pass
+	item = null
+	$Carry.remove_child(hose)
+	hose = null
+	get_node("../H20").return_hose()
 
 func set_carry_point():
 	if facing == -1:
 		$Carry.position = Vector2(-35, $Carry.position.y)
 		if item == ITEM.HAMMER and hammer:
 			hammer.rotation = 18
+		if item == ITEM.HOSE and hose:
+			hose.flip_v = true
 	else:
 		$Carry.position = Vector2(35, $Carry.position.y)
 		if item == ITEM.HAMMER and hammer:
 			hammer.rotation = -18
-
+		if item == ITEM.HOSE and hose:
+			hose.flip_v = false
 
 func _physics_process(delta):
 	get_input()

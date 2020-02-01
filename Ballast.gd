@@ -20,7 +20,7 @@ func get_balance():
 	else:
 		return 1
 
-func action(side : Sprite):
+func action(side : Sprite, _player):
 	if(side.is_broken()):
 		return
 	if side.name == "LeftBallast":

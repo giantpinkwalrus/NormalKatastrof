@@ -15,9 +15,9 @@ export(int, "Torpedo", "Periscope", "Water", "Engine", "Sonar", "Ballast Front",
 func _ready():
 	$DamageTimer.start(tick_time)
 
-func kick(_non):
+func kick(player):
 	damage(-kick_degradation)
-	owner.action(self)
+	owner.action(self, player)
 
 func fix():
 	current_health = clamp(current_health + repair_rate, 0, max_health)
