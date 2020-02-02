@@ -466,6 +466,8 @@ autostart = true
 [connection signal="right_ballast_broken" from="Submarine/Ballasts" to="Submarine" method="_on_Ballasts_right_ballast_broken"]
 [connection signal="h20_broken" from="Submarine/H20" to="Submarine" method="_on_H20_h20_broken"]
 [connection signal="destroy" from="Submarine/Torpedo" to="." method="_on_Torpedo_destroy"]
+[connection signal="damage_sub" from="Boat" to="Submarine" method="_on_Boat_damage_sub"]
+[connection signal="timeout" from="Boat/DamageTick" to="Boat" method="_on_DamageTick_timeout"]
 [connection signal="timeout" from="FireTimer" to="Submarine" method="_on_FireTimer_timeout"]
 [connection signal="timeout" from="LeakTimer" to="Submarine" method="_on_LeakTimer_timeout"]
 [connection signal="timeout" from="BoatTimer" to="." method="_on_BoatTimer_timeout"]

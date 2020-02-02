@@ -142,3 +142,7 @@ func _on_LeakTimer_timeout():
 	var f = randf()
 	if(f > lerp(min_leak_chance, max_leak_chance, damage)):
 		spawn_leak()
+
+
+func _on_Boat_damage_sub():
+	damage_ship(0.05)

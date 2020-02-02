@@ -6,6 +6,7 @@ export var default_distance : float = 150
 var current_distance : float
 
 onready var Explosion = preload("res://Explosion.tscn")
+signal damage_sub
 
 var max_size = 0.192
 var min_size = 0
@@ -41,3 +42,8 @@ func _process(delta):
 	else:
 		var scl = lerp(min_size, max_size, get_weight())
 		$Graphic.scale = Vector2(scl, scl)
+
+
+func _on_DamageTick_timeout():
+	if current_distance == 0 and alive:
+		emit_signal("damage_sub")
