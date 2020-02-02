@@ -27,6 +27,9 @@ func _ready():
 	randomize()
 
 func _process(_delta):
+	var angle = lerp(-115, 115, calc_issue_weight())
+	print(angle)
+	$KatastrofMeter/Pointer.rotation_degrees = angle
 	if(calc_full_issue() >= max_issue):
 		emit_signal("lose")
 
@@ -127,14 +130,14 @@ func _on_H20_h20_broken():
 func _on_Player_plug_leak(leak):
 	var name = leak.get_parent().name
 	var c = name.split("_")
-	put_out_fire(Vector2(c[0], c[1]))
+	plug_leak(Vector2(c[0], c[1]))
 	leak.queue_free()
 
 
 func _on_Player2_plug_leak(leak):
 	var name = leak.get_parent().name
 	var c = name.split("_")
-	put_out_fire(Vector2(c[0], c[1]))
+	plug_leak(Vector2(c[0], c[1]))
 	leak.queue_free()
 
 

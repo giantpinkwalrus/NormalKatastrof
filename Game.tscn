@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Submarine.gd" type="Script" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Boat.gd" type="Script" id=13]
 [ext_resource path="res://resources/ship.png" type="Texture" id=14]
 [ext_resource path="res://Torpedo.tscn" type="PackedScene" id=15]
+[ext_resource path="res://resources/katastrometer.png" type="Texture" id=16]
+[ext_resource path="res://resources/needle.png" type="Texture" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48, 128 )
@@ -419,6 +421,17 @@ position = Vector2( -272, -255 )
 
 [node name="Torpedo" parent="Submarine" instance=ExtResource( 15 )]
 position = Vector2( -174.268, -63.913 )
+
+[node name="KatastrofMeter" type="Sprite" parent="Submarine"]
+position = Vector2( -226.268, -465.913 )
+scale = Vector2( 0.3125, 0.3125 )
+texture = ExtResource( 16 )
+
+[node name="Pointer" type="Sprite" parent="Submarine/KatastrofMeter"]
+position = Vector2( 22.3998, 60.7999 )
+rotation = -2.00713
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 17 )
 
 [node name="Boat" type="Node2D" parent="."]
 position = Vector2( -311.268, -390.913 )
