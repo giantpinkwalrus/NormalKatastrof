@@ -5,7 +5,7 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hammer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Ladder.gd" type="Script" id=5]
-[ext_resource path="res://resources/Ladder.png" type="Texture" id=6]
+[ext_resource path="res://resources/ladder_joint.png" type="Texture" id=6]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=7]
 [ext_resource path="res://MidLevel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Engine.tscn" type="PackedScene" id=9]
@@ -82,22 +82,33 @@ collision_mask = 32
 script = ExtResource( 5 )
 
 [node name="LadderBottom" type="Sprite" parent="Submarine/Ladder"]
+position = Vector2( 0, 6.00018 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 6 )
 
-[node name="LadderSeg" type="Sprite" parent="Submarine/Ladder"]
-position = Vector2( 0, -64 )
+[node name="LadderBottom2" type="Sprite" parent="Submarine/Ladder"]
+position = Vector2( 0, -41.9999 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 6 )
 
-[node name="LadderSeg2" type="Sprite" parent="Submarine/Ladder"]
-position = Vector2( 0, -128 )
+[node name="LadderBottom3" type="Sprite" parent="Submarine/Ladder"]
+position = Vector2( 0, -89.9999 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 6 )
 
-[node name="LadderSeg3" type="Sprite" parent="Submarine/Ladder"]
-position = Vector2( 0, -128 )
+[node name="LadderBottom4" type="Sprite" parent="Submarine/Ladder"]
+position = Vector2( 0, -138 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 6 )
 
-[node name="LadderTop" type="Sprite" parent="Submarine/Ladder"]
-position = Vector2( 0, -192 )
+[node name="LadderBottom5" type="Sprite" parent="Submarine/Ladder"]
+position = Vector2( 0, -186 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+
+[node name="LadderBottom6" type="Sprite" parent="Submarine/Ladder"]
+position = Vector2( 0, -234 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 6 )
 
 [node name="LadderCollision" type="Area2D" parent="Submarine/Ladder" groups=[
@@ -491,6 +502,7 @@ scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 17 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Submarine"]
+position = Vector2( -0.268005, 0.0870056 )
 z_index = -2
 color = Color( 0.294118, 0.2, 0.109804, 1 )
 polygon = PoolVector2Array( -659.268, -416.913, 230.732, -415.913, 239.732, -30.913, -671.268, -25.913 )
@@ -524,7 +536,7 @@ position = Vector2( -752.268, -42.913 )
 scale = Vector2( 1.26953, 1.33984 )
 z_index = -1
 frames = SubResource( 4 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Boat" type="Node2D" parent="."]
@@ -565,15 +577,29 @@ autostart = true
 [node name="BoatTimer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -296.268, -503.913 )
+rotation = 3.12948
+scale = Vector2( 0.472805, 0.472805 )
+z_index = -1
+texture = ExtResource( 19 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -159.268, -501.913 )
+rotation = 3.12948
+scale = Vector2( -0.473, 0.473 )
+z_index = -2
+texture = ExtResource( 19 )
 [connection signal="lose" from="Submarine" to="." method="_on_Submarine_lose"]
 [connection signal="fire_out" from="Submarine/Player" to="Submarine" method="_on_Player_fire_out"]
 [connection signal="plug_leak" from="Submarine/Player" to="Submarine" method="_on_Player_plug_leak"]
 [connection signal="fire_out" from="Submarine/Player2" to="Submarine" method="_on_Player2_fire_out"]
 [connection signal="plug_leak" from="Submarine/Player2" to="Submarine" method="_on_Player2_plug_leak"]
-[connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_entered"]
 [connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_entered"]
-[connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_exited"]
+[connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_entered"]
 [connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_exited"]
+[connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_exited"]
 [connection signal="engine_broken" from="Submarine/Engine" to="Submarine" method="_on_Engine_engine_broken"]
 [connection signal="balance_change" from="Submarine/Ballasts" to="Submarine" method="_on_Ballasts_balance_change"]
 [connection signal="left_ballast_broken" from="Submarine/Ballasts" to="Submarine" method="_on_Ballasts_left_ballast_broken"]

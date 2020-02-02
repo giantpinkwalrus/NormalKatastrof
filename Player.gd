@@ -142,7 +142,7 @@ func chuck_hammer():
 	$Carry.remove_child(hammer)
 	hammer = null
 	var hammer_phys = Hammer.instance()
-	hammer_phys.position = Vector2(facing * 64 + position.x, position.y)
+	hammer_phys.position = Vector2(position.x, position.y)
 	hammer_phys.apply_central_impulse(Vector2(facing * 500, -500))
 	self.get_parent().add_child(hammer_phys)
 
