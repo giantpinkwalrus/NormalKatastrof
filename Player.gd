@@ -15,6 +15,7 @@ onready var Char1 = preload("res://resources/char1.png")
 onready var Char2 = preload("res://resources/char2.png")
 
 signal fire_out(fire)
+signal plug_leak(leak)
 
 enum STATE {
 	CLIMBING,
@@ -58,6 +59,9 @@ func instatiate_swoosh():
 	pass
 
 func handle_swoosh_collision(area : Area2D):
+	if area.is_in_group("leak"):
+		emit_signal("plug_leak", area.owner)
+		return
 	area.get_owner().kick(self)
 
 func carry_hammer():

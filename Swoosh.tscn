@@ -16,7 +16,7 @@ polygon = PoolVector2Array( 3.01697, -23.102, 14.017, -6.10201, 15.017, 17.898, 
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 12
+collision_mask = 140
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 5.01697, 2.89799 )

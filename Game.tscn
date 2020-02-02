@@ -27,8 +27,8 @@ script = ExtResource( 1 )
 
 [node name="Submarine" type="Node2D" parent="."]
 script = ExtResource( 2 )
-max_fire_chance = 0.0
-min_fire_chance = 0.0
+max_leak_chance = 0.0
+min_leak_chance = 0.0
 
 [node name="Player" parent="Submarine" instance=ExtResource( 3 )]
 position = Vector2( -344.268, -79.913 )
@@ -365,14 +365,64 @@ position = Vector2( 220, 191 )
 [node name="6_1" type="Node2D" parent="Submarine/Fires"]
 position = Vector2( 325, 188 )
 
+[node name="Leaks" type="Node2D" parent="Submarine"]
+position = Vector2( -216.268, -254.913 )
+
+[node name="0_0" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( -344, -3 )
+
+[node name="1_0" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( -234, -1 )
+
+[node name="2_0" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( -130, -6 )
+
+[node name="3_0" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( -10, -4 )
+
+[node name="4_0" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( 95, -4 )
+
+[node name="5_0" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( 206, -7 )
+
+[node name="6_0" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( 311, -10 )
+
+[node name="0_1" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( -330, 195 )
+
+[node name="1_1" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( -220, 197 )
+
+[node name="2_1" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( -116, 192 )
+
+[node name="3_1" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( 4, 194 )
+
+[node name="4_1" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( 109, 194 )
+
+[node name="5_1" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( 220, 191 )
+
+[node name="6_1" type="Node2D" parent="Submarine/Leaks"]
+position = Vector2( 325, 188 )
+
 [node name="H20" parent="Submarine" instance=ExtResource( 11 )]
 position = Vector2( -272, -255 )
 
 [node name="FireTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="LeakTimer" type="Timer" parent="."]
+autostart = true
 [connection signal="fire_out" from="Submarine/Player" to="Submarine" method="_on_Player_fire_out"]
+[connection signal="plug_leak" from="Submarine/Player" to="Submarine" method="_on_Player_plug_leak"]
 [connection signal="fire_out" from="Submarine/Player2" to="Submarine" method="_on_Player2_fire_out"]
+[connection signal="plug_leak" from="Submarine/Player2" to="Submarine" method="_on_Player2_plug_leak"]
 [connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_entered"]
 [connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_entered"]
 [connection signal="area_exited" from="Submarine/Ladder/LadderCollision" to="Submarine/Player" method="_on_LadderCollision_area_exited"]
@@ -381,4 +431,6 @@ autostart = true
 [connection signal="balance_change" from="Submarine/Ballasts" to="Submarine" method="_on_Ballasts_balance_change"]
 [connection signal="left_ballast_broken" from="Submarine/Ballasts" to="Submarine" method="_on_Ballasts_left_ballast_broken"]
 [connection signal="right_ballast_broken" from="Submarine/Ballasts" to="Submarine" method="_on_Ballasts_right_ballast_broken"]
+[connection signal="h20_broken" from="Submarine/H20" to="Submarine" method="_on_H20_h20_broken"]
 [connection signal="timeout" from="FireTimer" to="Submarine" method="_on_FireTimer_timeout"]
+[connection signal="timeout" from="LeakTimer" to="Submarine" method="_on_LeakTimer_timeout"]

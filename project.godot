@@ -85,6 +85,7 @@ p2_action={
 2d_physics/layer_5="midlevel"
 2d_physics/layer_6="ladder"
 2d_physics/layer_7="fire"
+2d_physics/layer_8="leak"
 
 [memory]
 
