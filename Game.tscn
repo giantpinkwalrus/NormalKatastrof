@@ -496,6 +496,7 @@ position = Vector2( -751.268, -42.913 )
 scale = Vector2( 1.26953, 1.33984 )
 z_index = -1
 frames = SubResource( 4 )
+frame = 2
 playing = true
 
 [node name="Boat" type="Node2D" parent="."]

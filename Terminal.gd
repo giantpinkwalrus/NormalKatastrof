@@ -15,10 +15,14 @@ func _ready():
 	$DamageTimer.start(tick_time)
 
 func kick(player):
+	$Thud.pitch_scale = 1 + rand_range(-0.05, 0.75)
+	$Thud.play()
 	damage(-kick_degradation)
 	owner.action(self, player)
 
 func fix():
+	$FixSound.pitch_scale = 1 + rand_range(-0.05, 0.75)
+	$FixSound.play()
 	current_health = clamp(current_health + repair_rate, 0, max_health)
 
 func is_broken():
