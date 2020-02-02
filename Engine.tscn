@@ -16,3 +16,4 @@ z_index = 5
 
 [node name="Shaker" parent="." instance=ExtResource( 4 )]
 [connection signal="part_broken" from="Terminal" to="." method="_on_Terminal_part_broken"]
+[connection signal="shake" from="Terminal" to="." method="_on_Terminal_shake"]

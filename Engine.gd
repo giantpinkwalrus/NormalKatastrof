@@ -4,6 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 signal engine_broken
+signal shake
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,6 @@ func _process(_delta):
 
 func _on_Terminal_part_broken():
 	emit_signal("engine_broken")
-	pass # Replace with function body.
 
-
+func _on_Terminal_shake():
+	emit_signal("shake")

@@ -2,7 +2,7 @@ extends Node2D
 
 
 var alive = false
-export var default_distance : float = 150
+export var default_distance : float = 35
 var current_distance : float
 
 onready var Explosion = preload("res://Explosion.tscn")
@@ -47,3 +47,6 @@ func _process(delta):
 func _on_DamageTick_timeout():
 	if current_distance == 0 and alive:
 		emit_signal("damage_sub")
+		var expl = Explosion.instance()
+		expl.get_node("Sprite/AnimationPlayer").play("Explosion")
+		get_node("Explosion_" + String(randi() % 3 + 1)).add_child(expl)

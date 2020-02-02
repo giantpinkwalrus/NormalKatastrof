@@ -7,6 +7,7 @@ extends Node2D
 signal balance_change
 signal left_ballast_broken
 signal right_ballast_broken
+signal shake
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,3 +41,10 @@ func _on_LeftBallast_part_broken():
 
 func _on_RightBallast_part_broken():
 	emit_signal("right_ballast_broken")
+
+
+func _on_LeftBallast_shake():
+	emit_signal("shake")
+
+func _on_RightBallast_shake():
+	emit_signal("shake")

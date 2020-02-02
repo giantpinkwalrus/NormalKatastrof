@@ -1,6 +1,7 @@
 extends Node2D
 
 signal h20_broken
+signal shake
 
 var has_hose = true
 
@@ -41,4 +42,7 @@ func _process(_delta):
 
 func _on_Terminal_part_broken():
 	emit_signal("h20_broken")
-	pass # Replace with function body.
+
+
+func _on_Terminal_shake():
+	emit_signal("shake")

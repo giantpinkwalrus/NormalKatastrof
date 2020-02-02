@@ -43,4 +43,6 @@ position = Vector2( -414.355, -25.1345 )
 scale = Vector2( 0.16, 0.16 )
 texture = ExtResource( 4 )
 [connection signal="part_broken" from="LeftBallast" to="." method="_on_LeftBallast_part_broken"]
+[connection signal="shake" from="LeftBallast" to="." method="_on_LeftBallast_shake"]
 [connection signal="part_broken" from="RightBallast" to="." method="_on_RightBallast_part_broken"]
+[connection signal="shake" from="RightBallast" to="." method="_on_RightBallast_shake"]

@@ -1,16 +1,16 @@
 extends Node2D
 
 var damage = 0
-export var max_fire_chance = 0.35
-export var min_fire_chance = 0.85
+export var max_fire_chance = 0.15
+export var min_fire_chance = 0.55
 var fires_top = [0, 0, 0, 0, 0, 0, 0]
 var fires_bot = [0, 0, 0, 0, 0, 0, 0]
 var fire_issue = 0
 var fires = [fires_top, fires_bot];
 const arr_size = 14
 
-export var max_leak_chance = 0.25
-export var min_leak_chance = 0.75
+export var max_leak_chance = 0.10
+export var min_leak_chance = 0.45
 var leaks_top = [0, 0, 0, 0, 0, 0, 0]
 var leaks_bot = [0, 0, 0, 0, 0, 0, 0]
 var leak_issue = 0
@@ -100,12 +100,15 @@ func damage_ship(amount = 0.01):
 	damage += amount
 
 func _on_Ballasts_left_ballast_broken():
+	$SceneCamera.shake(0.3, 18, 6)
 	damage_ship()
 
 func _on_Ballasts_right_ballast_broken():
+	$SceneCamera.shake(0.3, 18, 6)
 	damage_ship()
 
 func _on_Engine_engine_broken():
+	$SceneCamera.shake(0.3, 18, 6)
 	damage_ship()
 
 
@@ -147,4 +150,19 @@ func _on_LeakTimer_timeout():
 
 
 func _on_Boat_damage_sub():
-	damage_ship(0.05)
+	damage_ship(0.15)
+	#shake(duration, frequency, amplitude):
+	$SceneCamera.shake(0.5, 18, 10)
+
+
+func _on_Torpedo_shake():
+	$SceneCamera.shake(0.3, 18, 6)
+
+func _on_H20_shake():
+	$SceneCamera.shake(0.3, 18, 6)
+
+func _on_Ballasts_shake():
+	$SceneCamera.shake(0.3, 18, 6)
+
+func _on_Engine_shake():
+	$SceneCamera.shake(0.3, 18, 6)

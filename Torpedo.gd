@@ -1,6 +1,7 @@
 extends Node2D
 
 signal destroy
+signal shake
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,3 +28,7 @@ func _process(delta):
 
 func _on_Terminal_part_broken():
 	pass
+
+
+func _on_Terminal_shake():
+	emit_signal("shake")
