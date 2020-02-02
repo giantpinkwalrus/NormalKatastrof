@@ -63,14 +63,16 @@ func handle_swoosh_collision(area : Area2D):
 	area.get_owner().kick(self)
 
 func carry_hammer():
-	item = ITEM.HAMMER
-	hammer = CarryHammer.instance()
-	$Carry.add_child(hammer)
+	if item == null:
+		item = ITEM.HAMMER
+		hammer = CarryHammer.instance()
+		$Carry.add_child(hammer)
 
 func carry_hose():
-	item = ITEM.HOSE
-	hose = CarryHose.instance()
-	$Carry.add_child(hose)
+	if item == null:
+		item = ITEM.HOSE
+		hose = CarryHose.instance()
+		$Carry.add_child(hose)
 
 func get_input():
 	$PlayerSprite.play(player + "run")

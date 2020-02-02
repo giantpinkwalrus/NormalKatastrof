@@ -10,10 +10,11 @@ func _ready():
 
 func action(_term, player):
 	if has_hose:
-		player.carry_hose()
-		has_hose = false
-		$HoseHolder.visible = false
-		$PercentageDecay.disabled = false
+		if player.item == null:
+			player.carry_hose()
+			has_hose = false
+			$HoseHolder.visible = false
+			$PercentageDecay.disabled = false
 	else:
 		$PercentageDecay.action()
 

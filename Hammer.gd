@@ -11,8 +11,9 @@ func _ready():
 	pass # Replace with function body.
 	
 func kick(player):
-	call_deferred("queue_free")
-	player.carry_hammer()
+	if player.item == null:
+		call_deferred("queue_free")
+		player.carry_hammer()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

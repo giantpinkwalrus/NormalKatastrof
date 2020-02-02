@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/soviet_anthem.wav-f7f70437a9ace7da8278cc6c380f31aa.sample"
+
+[deps]
+
+source_file="res://resources/soviet_anthem.wav"
+dest_files=[ "res://.import/soviet_anthem.wav-f7f70437a9ace7da8278cc6c380f31aa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
