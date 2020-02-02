@@ -87,7 +87,7 @@ func get_input():
 		else:
 			cur_speed = cur_speed - drag * sign(cur_speed)
 			$PlayerSprite.play(player + "idle")
-		if Input.is_action_pressed(player + "down") or Input.is_action_pressed(player + "up") and on_ladder:
+		if Input.is_action_pressed(player + "down") and on_ladder or Input.is_action_pressed(player + "up") and on_ladder:
 			state = STATE.CLIMBING
 			velocity.y = 0
 		else:
