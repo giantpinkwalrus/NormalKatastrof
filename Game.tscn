@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Submarine.gd" type="Script" id=2]
@@ -26,6 +26,16 @@
 [ext_resource path="res://resources/propellor1_small.png" type="Texture" id=24]
 [ext_resource path="res://resources/kreml.png" type="Texture" id=25]
 [ext_resource path="res://SceneCamera.gd" type="Script" id=26]
+[ext_resource path="res://resources/batang3.wav" type="AudioStream" id=27]
+[ext_resource path="res://resources/batang1.wav" type="AudioStream" id=28]
+[ext_resource path="res://resources/davaidavai.wav" type="AudioStream" id=29]
+[ext_resource path="res://resources/dada.wav" type="AudioStream" id=30]
+[ext_resource path="res://resources/ja_znaju_tavarits.wav" type="AudioStream" id=31]
+[ext_resource path="res://resources/njet_manual.wav" type="AudioStream" id=32]
+[ext_resource path="res://resources/cyka_blyat.wav" type="AudioStream" id=33]
+[ext_resource path="res://resources/normal_katastrof.wav" type="AudioStream" id=34]
+[ext_resource path="res://resources/teknikal_problemo.wav" type="AudioStream" id=35]
+[ext_resource path="res://Timer.gd" type="Script" id=36]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48, 128 )
@@ -65,6 +75,32 @@ min_leak_chance = 0.0
 position = Vector2( -344.268, -79.913 )
 z_index = 5
 collision_mask = 17
+
+[node name="Timer" type="Timer" parent="Submarine/Player"]
+wait_time = 5.0
+autostart = true
+script = ExtResource( 36 )
+
+[node name="AudioStreamPlayer2D0" type="AudioStreamPlayer2D" parent="Submarine/Player/Timer"]
+stream = ExtResource( 33 )
+
+[node name="AudioStreamPlayer2D1" type="AudioStreamPlayer2D" parent="Submarine/Player/Timer"]
+stream = ExtResource( 35 )
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Submarine/Player/Timer"]
+stream = ExtResource( 30 )
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="Submarine/Player/Timer"]
+stream = ExtResource( 29 )
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="Submarine/Player/Timer"]
+stream = ExtResource( 31 )
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="Submarine/Player/Timer"]
+stream = ExtResource( 32 )
+
+[node name="AudioStreamPlayer2D6" type="AudioStreamPlayer2D" parent="Submarine/Player/Timer"]
+stream = ExtResource( 34 )
 
 [node name="Player2" parent="Submarine" instance=ExtResource( 3 )]
 position = Vector2( -94.017, -256.898 )
@@ -537,7 +573,7 @@ position = Vector2( -752.268, -42.913 )
 scale = Vector2( 1.26953, 1.33984 )
 z_index = -1
 frames = SubResource( 4 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Boat" type="Node2D" parent="."]
@@ -576,6 +612,12 @@ position = Vector2( -232, 445 )
 [node name="Explosion_3" type="Node2D" parent="Boat"]
 position = Vector2( 516, 227 )
 
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="Boat"]
+stream = ExtResource( 27 )
+
+[node name="DestroySound" type="AudioStreamPlayer2D" parent="Boat"]
+stream = ExtResource( 28 )
+
 [node name="FireTimer" type="Timer" parent="."]
 wait_time = 7.0
 autostart = true
@@ -611,6 +653,7 @@ polygon = PoolVector2Array( -872.268, -581.913, 494.732, -584.913, 482.732, 227.
 [connection signal="lose" from="Submarine" to="." method="_on_Submarine_lose"]
 [connection signal="fire_out" from="Submarine/Player" to="Submarine" method="_on_Player_fire_out"]
 [connection signal="plug_leak" from="Submarine/Player" to="Submarine" method="_on_Player_plug_leak"]
+[connection signal="timeout" from="Submarine/Player/Timer" to="Submarine/Player/Timer" method="_on_Timer_timeout"]
 [connection signal="fire_out" from="Submarine/Player2" to="Submarine" method="_on_Player2_fire_out"]
 [connection signal="plug_leak" from="Submarine/Player2" to="Submarine" method="_on_Player2_plug_leak"]
 [connection signal="area_entered" from="Submarine/Ladder/LadderCollision" to="Submarine/Player2" method="_on_LadderCollision_area_entered"]

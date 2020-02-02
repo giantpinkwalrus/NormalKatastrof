@@ -17,12 +17,16 @@ func spawn_boat():
 	$Graphic.visible = true
 
 func kill_boat():
+	if !alive:
+		return
 	alive = false
 	$Graphic.visible = false
 	var expl = Explosion.instance()
 	expl.position = $Graphic.position
 	expl.get_node("Sprite/AnimationPlayer").play("Explosion")
 	self.add_child(expl)
+	$ExplosionSound.pitch_scale = rand_range(0.95, 1.05)
+	$ExplosionSound.play(0.1)
 	current_distance = 1000
 
 func change_distance(amount):
@@ -50,3 +54,5 @@ func _on_DamageTick_timeout():
 		var expl = Explosion.instance()
 		expl.get_node("Sprite/AnimationPlayer").play("Explosion")
 		get_node("Explosion_" + String(randi() % 3 + 1)).add_child(expl)
+		$ExplosionSound.pitch_scale = rand_range(0.95, 1.05)
+		$ExplosionSound.play()
