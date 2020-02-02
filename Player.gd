@@ -14,6 +14,8 @@ onready var Hammer = preload("res://Hammer.tscn")
 onready var Char1 = preload("res://resources/char1.png")
 onready var Char2 = preload("res://resources/char2.png")
 
+signal fire_out(fire)
+
 enum STATE {
 	CLIMBING,
 	RUNNING
@@ -121,6 +123,12 @@ func handle_hammer_swing():
 		($UseItemLeft as RayCast2D).get_collider().owner.fix()
 	if facing == DIR.RIGHT and $UseItemRight.is_colliding():
 		($UseItemRight as RayCast2D).get_collider().owner.fix()
+func handle_hose():
+	if facing == DIR.LEFT and $HoseLeft.is_colliding():
+		emit_signal("fire_out", $HoseLeft.get_collider().owner)
+	if facing == DIR.RIGHT and $HoseRight.is_colliding():
+		emit_signal("fire_out", $HoseRight.get_collider().owner)
+
 func chuck_hammer():
 	item = null
 	$Carry.remove_child(hammer)
@@ -158,6 +166,8 @@ func _physics_process(delta):
 		velocity.x = 0
 		self.position = Vector2(get_node("../Ladder").position.x, position.y)
 	var _s = move_and_slide(velocity * delta)
+	if item == ITEM.HOSE and hose:
+		handle_hose()
 
 func _on_LadderCollision_area_entered(_area):
 	on_ladder = true

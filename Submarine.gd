@@ -10,13 +10,16 @@ onready var Fire = preload("res://Fire.tscn")
 
 func _ready():
 	randomize()
-
+	
 func spawn_fire():
 	var free_spots = get_free_fire()
 	var spot = free_spots[randi() % free_spots.size()];
 	fires[spot.y][spot.x] = 1
 	var fire = Fire.instance()
 	$Fires.get_node(String(spot.x) + "_" + String(spot.y)).add_child(fire)
+
+func put_out_fire(spot):
+	fires[spot.y][spot.x] = 0
 
 func get_free_fire():
 	var free = Array()
@@ -37,7 +40,6 @@ func _on_Ballasts_balance_change():
 
 func _on_FireTimer_timeout():
 	var f = randf()
-	print(lerp(min_fire_chance, max_fire_chance, damage))
 	if(f > lerp(min_fire_chance, max_fire_chance, damage)):
 		spawn_fire()
 
@@ -52,3 +54,16 @@ func _on_Ballasts_right_ballast_broken():
 
 func _on_Engine_engine_broken():
 	damage_ship()
+
+
+func _on_Player2_fire_out(fire):
+	var name = fire.get_parent().name
+	var c = name.split("_")
+	put_out_fire(Vector2(c[0], c[1]))
+	fire.queue_free()
+
+func _on_Player_fire_out(fire):
+	var name = fire.get_parent().name
+	var c = name.split("_")
+	put_out_fire(Vector2(c[0], c[1]))
+	fire.queue_free()
