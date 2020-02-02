@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Ballast.gd" type="Script" id=1]
 [ext_resource path="res://Terminal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Balance.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/watertank.png" type="Texture" id=4]
+[ext_resource path="res://Shaker.tscn" type="PackedScene" id=5]
 
 [node name="Ballasts" type="Node2D"]
 script = ExtResource( 1 )
@@ -21,13 +22,25 @@ texture = null
 [node name="RightBalance" parent="RightBallast" instance=ExtResource( 3 )]
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( -413.963, -21.426 )
 scale = Vector2( 0.160012, 0.160012 )
 texture = ExtResource( 4 )
 
 [node name="Sprite2" type="Sprite" parent="."]
+visible = false
 position = Vector2( 417.537, -21.426 )
 scale = Vector2( 0.160012, 0.160012 )
+texture = ExtResource( 4 )
+
+[node name="Shaker_Right" parent="." instance=ExtResource( 5 )]
+position = Vector2( 417.267, -15.3498 )
+scale = Vector2( 0.16, 0.16 )
+texture = ExtResource( 4 )
+
+[node name="Shaker_Left" parent="." instance=ExtResource( 5 )]
+position = Vector2( -414.355, -25.1345 )
+scale = Vector2( 0.16, 0.16 )
 texture = ExtResource( 4 )
 [connection signal="part_broken" from="LeftBallast" to="." method="_on_LeftBallast_part_broken"]
 [connection signal="part_broken" from="RightBallast" to="." method="_on_RightBallast_part_broken"]

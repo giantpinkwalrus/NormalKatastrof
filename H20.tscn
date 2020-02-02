@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://H20.gd" type="Script" id=1]
 [ext_resource path="res://Terminal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://PercentageDecay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/hosenose.png" type="Texture" id=4]
 [ext_resource path="res://resources/valve.png" type="Texture" id=5]
+[ext_resource path="res://Shaker.tscn" type="PackedScene" id=6]
 
 [node name="H20" type="Node2D"]
 script = ExtResource( 1 )
@@ -29,7 +30,13 @@ z_index = 4
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( -1.52588e-05, -5.99998 )
 scale = Vector2( 0.316406, 0.316406 )
+texture = ExtResource( 5 )
+
+[node name="Shaker" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, -5 )
+scale = Vector2( 0.316, 0.316 )
 texture = ExtResource( 5 )
 [connection signal="part_broken" from="Terminal" to="." method="_on_Terminal_part_broken"]

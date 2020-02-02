@@ -10,6 +10,7 @@ func _ready():
 	pass # Replace with function body.
 
 func action(_n, _p):
+	$Shaker.play()
 	$PercentageDecay.action()
 
 func get_weight():
@@ -26,3 +27,5 @@ func _process(_delta):
 func _on_Terminal_part_broken():
 	emit_signal("engine_broken")
 	pass # Replace with function body.
+
+

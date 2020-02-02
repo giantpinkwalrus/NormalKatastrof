@@ -16,6 +16,7 @@ func action(_term, player):
 			$HoseHolder.visible = false
 			$PercentageDecay.disabled = false
 	else:
+		$Shaker.play()
 		$PercentageDecay.action()
 
 func return_hose():

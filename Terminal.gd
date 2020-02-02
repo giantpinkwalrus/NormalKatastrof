@@ -40,3 +40,5 @@ func damage(amount):
 
 func _on_DamageTimer_timeout():
 	damage(-time_degradation)
+
+

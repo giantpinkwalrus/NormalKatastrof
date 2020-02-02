@@ -21,14 +21,17 @@ func get_balance():
 		return 1
 
 func action(side : Sprite, _player):
+	
 	if(side.is_broken()):
 		return
 	if side.name == "LeftBallast":
 		$LeftBallast/LeftBalance.higher()
 		$RightBallast/RightBalance.lower()
+		$Shaker_Left.play()
 	else:
 		$LeftBallast/LeftBalance.lower()
 		$RightBallast/RightBalance.higher()
+		$Shaker_Right.play()
 	emit_signal("balance_change")
 
 

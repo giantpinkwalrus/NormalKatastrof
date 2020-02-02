@@ -7,6 +7,7 @@ func _ready():
 	pass # Replace with function body.
 
 func action(_term, player):
+	$Shaker.play()
 	if !is_broken():
 		emit_signal("destroy")
 	else:
