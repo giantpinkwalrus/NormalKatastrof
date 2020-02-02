@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/metal_thud.wav-fc3fb59d92e0f6a5c103baaac5fa10fd.sample"
+
+[deps]
+
+source_file="res://resources/metal_thud.wav"
+dest_files=[ "res://.import/metal_thud.wav-fc3fb59d92e0f6a5c103baaac5fa10fd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

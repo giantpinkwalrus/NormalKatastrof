@@ -496,6 +496,7 @@ position = Vector2( -751.268, -42.913 )
 scale = Vector2( 1.26953, 1.33984 )
 z_index = -1
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="Boat" type="Node2D" parent="."]
@@ -508,6 +509,12 @@ default_distance = 35.0
 position = Vector2( 607.625, -63.625 )
 scale = Vector2( 0.221924, 0.221924 )
 texture = ExtResource( 12 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Boat/Periscope"]
+position = Vector2( 1.68945, -6.19582 )
+z_index = -2
+color = Color( 0.0941176, 0.596078, 0.839216, 1 )
+polygon = PoolVector2Array( -466.939, 174.046, -435.397, -136.871, -283.88, -392.026, -18.0234, -495.665, 211.785, -455.111, 452.294, -217.98, 488.343, 137.998, 402.728, 318.24 )
 
 [node name="Graphic" type="Sprite" parent="Boat"]
 position = Vector2( 609, -42 )
