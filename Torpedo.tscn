@@ -1,20 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Torpedo.gd" type="Script" id=1]
 [ext_resource path="res://Terminal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/torpedo.png" type="Texture" id=3]
+[ext_resource path="res://resources/radarsystem.png" type="Texture" id=4]
 
 [node name="Torpedo" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Terminal" parent="." instance=ExtResource( 2 )]
+texture = null
 kick_degradation = 149
 time_degradation = 0
 tick_time = 0.0
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.999989, 130 )
+position = Vector2( 0.999989, 86 )
 scale = Vector2( 0.410156, 0.410156 )
 z_index = 2
 texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 1.81899e-12, -31 )
+scale = Vector2( 0.160156, 0.160156 )
+texture = ExtResource( 4 )
 [connection signal="part_broken" from="Terminal" to="." method="_on_Terminal_part_broken"]

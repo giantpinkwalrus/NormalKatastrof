@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Submarine.gd" type="Script" id=2]
@@ -17,6 +17,13 @@
 [ext_resource path="res://Torpedo.tscn" type="PackedScene" id=15]
 [ext_resource path="res://resources/katastrometer.png" type="Texture" id=16]
 [ext_resource path="res://resources/needle.png" type="Texture" id=17]
+[ext_resource path="res://resources/submarine.png" type="Texture" id=18]
+[ext_resource path="res://resources/plate2.png" type="Texture" id=19]
+[ext_resource path="res://resources/plate3.png" type="Texture" id=20]
+[ext_resource path="res://resources/propellor4_small.png" type="Texture" id=21]
+[ext_resource path="res://resources/propellor3_small.png" type="Texture" id=22]
+[ext_resource path="res://resources/propellor2_small.png" type="Texture" id=23]
+[ext_resource path="res://resources/propellor1_small.png" type="Texture" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48, 128 )
@@ -26,6 +33,14 @@ extents = Vector2( 32, 136 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 42, 213 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 24 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Game" type="Node2D"]
 position = Vector2( 728.268, 479.913 )
@@ -88,56 +103,69 @@ position = Vector2( 0, -96 )
 shape = SubResource( 2 )
 
 [node name="Walls and Floors" type="Node2D" parent="Submarine"]
-position = Vector2( -0.268005, 1.08701 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( -0.268005, 2.08701 )
 
 [node name="Sub_Wall2" type="Node2D" parent="Submarine/Walls and Floors"]
 position = Vector2( 263.732, 0 )
 
 [node name="Wall" parent="Submarine/Walls and Floors/Sub_Wall2" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 0.268005, 0 )
 
 [node name="Wall2" parent="Submarine/Walls and Floors/Sub_Wall2" instance=ExtResource( 7 )]
 position = Vector2( 0, -63.9132 )
+rotation = -1.5708
 
 [node name="Wall3" parent="Submarine/Walls and Floors/Sub_Wall2" instance=ExtResource( 7 )]
 position = Vector2( 0, -127.913 )
+rotation = -1.5708
 
 [node name="Wall4" parent="Submarine/Walls and Floors/Sub_Wall2" instance=ExtResource( 7 )]
 position = Vector2( 0, -191.913 )
+rotation = -1.5708
 
 [node name="Wall5" parent="Submarine/Walls and Floors/Sub_Wall2" instance=ExtResource( 7 )]
 position = Vector2( 0, -255.913 )
+rotation = -1.5708
 
 [node name="Wall6" parent="Submarine/Walls and Floors/Sub_Wall2" instance=ExtResource( 7 )]
 position = Vector2( 0, -319.913 )
+rotation = -1.5708
 
 [node name="Wall7" parent="Submarine/Walls and Floors/Sub_Wall2" instance=ExtResource( 7 )]
 position = Vector2( 0, -383.913 )
+rotation = -1.5708
 
 [node name="Sub_Wall" type="Node2D" parent="Submarine/Walls and Floors"]
 position = Vector2( -696.268, 0 )
 
 [node name="Wall" parent="Submarine/Walls and Floors/Sub_Wall" instance=ExtResource( 7 )]
+visible = false
+rotation = 0.757473
 
 [node name="Wall2" parent="Submarine/Walls and Floors/Sub_Wall" instance=ExtResource( 7 )]
 position = Vector2( 0, -63.9132 )
+rotation = 1.5708
 
 [node name="Wall3" parent="Submarine/Walls and Floors/Sub_Wall" instance=ExtResource( 7 )]
 position = Vector2( 0, -127.913 )
+rotation = 1.5708
 
 [node name="Wall4" parent="Submarine/Walls and Floors/Sub_Wall" instance=ExtResource( 7 )]
 position = Vector2( 0, -191.913 )
+rotation = 1.5708
 
 [node name="Wall5" parent="Submarine/Walls and Floors/Sub_Wall" instance=ExtResource( 7 )]
-position = Vector2( 0, -255.913 )
+position = Vector2( 0.268005, -256 )
+rotation = 1.5708
 
 [node name="Wall6" parent="Submarine/Walls and Floors/Sub_Wall" instance=ExtResource( 7 )]
 position = Vector2( 0, -319.913 )
+rotation = 1.5708
 
 [node name="Wall7" parent="Submarine/Walls and Floors/Sub_Wall" instance=ExtResource( 7 )]
 position = Vector2( 0, -383.913 )
+rotation = 1.5708
 
 [node name="Floor2" type="Node2D" parent="Submarine/Walls and Floors"]
 position = Vector2( 23.7318, -191.913 )
@@ -235,7 +263,8 @@ position = Vector2( -58.2682, 0 )
 position = Vector2( 61.7318, 0.0868225 )
 
 [node name="Floor3" type="Node2D" parent="Submarine/Walls and Floors"]
-position = Vector2( 23.7318, -449 )
+position = Vector2( -456.268, -449 )
+rotation = 3.14159
 __meta__ = {
 "_edit_group_": true
 }
@@ -432,6 +461,50 @@ position = Vector2( 22.3998, 60.7999 )
 rotation = -2.00713
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 17 )
+
+[node name="Sub Graphic" type="Sprite" parent="Submarine"]
+visible = false
+position = Vector2( -242.268, -367.913 )
+scale = Vector2( 2.26001, 3.17236 )
+z_index = -2
+texture = ExtResource( 18 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Submarine"]
+z_index = -2
+color = Color( 0.294118, 0.2, 0.109804, 1 )
+polygon = PoolVector2Array( -659.268, -416.913, 230.732, -415.913, 239.732, -30.913, -671.268, -25.913 )
+
+[node name="corners" type="Node2D" parent="Submarine"]
+
+[node name="Sprite" type="Sprite" parent="Submarine/corners"]
+position = Vector2( 220.732, -20.9129 )
+scale = Vector2( 0.34375, 0.34375 )
+texture = ExtResource( 19 )
+
+[node name="Sprite2" type="Sprite" parent="Submarine/corners"]
+position = Vector2( -650.268, -405.913 )
+rotation = 2.81593
+scale = Vector2( 0.34375, 0.34375 )
+texture = ExtResource( 19 )
+
+[node name="Sprite3" type="Sprite" parent="Submarine/corners"]
+position = Vector2( -652.268, -21.913 )
+scale = Vector2( 0.421875, 0.421875 )
+texture = ExtResource( 20 )
+
+[node name="Sprite4" type="Sprite" parent="Submarine/corners"]
+position = Vector2( 210.732, -408.913 )
+rotation = -3.11077
+scale = Vector2( 0.421875, 0.421875 )
+texture = ExtResource( 20 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Submarine"]
+position = Vector2( -750.268, -42.913 )
+scale = Vector2( 1.26953, 1.33984 )
+z_index = -1
+frames = SubResource( 4 )
+frame = 1
+playing = true
 
 [node name="Boat" type="Node2D" parent="."]
 position = Vector2( -311.268, -390.913 )
