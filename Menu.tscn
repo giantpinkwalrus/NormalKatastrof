@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Menu.gd" type="Script" id=1]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 462.0
+margin_top = 236.0
+margin_right = 562.0
+margin_bottom = 364.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_right = 100.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+text = "START"
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 100.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 20, 20 )
+
+[node name="How to play" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 78.0
+margin_right = 100.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 50 )
+text = "How to play"
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+margin_left = 192.0
+margin_top = 181.0
+margin_right = 834.0
+margin_bottom = 382.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PopupPanel/VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 400, 200 )
+text = "Controls:
+Player 1: Arrow keys & M to do actions
+Player 2: WASD & F to do actions
+
+Bash things to make them do things.
+Bash things with hammer to make them less broken
+Put out fires with the hose
+Plug leaks by bashing the spot"
+
+[node name="Close" type="Button" parent="PopupPanel/VBoxContainer"]
+margin_top = 404.0
+margin_right = 400.0
+margin_bottom = 504.0
+rect_min_size = Vector2( 400, 100 )
+text = "CLOSE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/How to play" to="." method="_on_How_to_play_pressed"]
+[connection signal="pressed" from="PopupPanel/VBoxContainer/Close" to="." method="_on_Close_pressed"]
