@@ -8,3 +8,8 @@ export_presets.cfg
 .mono/
 data_*/
 .DS_STORE
+
+*.exe
+*.dmg
+*.x86_64
+*.pck
