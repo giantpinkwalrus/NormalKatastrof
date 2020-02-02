@@ -5,23 +5,39 @@ export var max_fire_chance = 0.35
 export var min_fire_chance = 0.85
 var fires_top = [0, 0, 0, 0, 0, 0, 0]
 var fires_bot = [0, 0, 0, 0, 0, 0, 0]
+var fire_issue = 0
 var fires = [fires_top, fires_bot];
+const arr_size = 14
 
-export var max_leak_chance = 0.35
-export var min_leak_chance = 0.85
+export var max_leak_chance = 0.25
+export var min_leak_chance = 0.75
 var leaks_top = [0, 0, 0, 0, 0, 0, 0]
 var leaks_bot = [0, 0, 0, 0, 0, 0, 0]
+var leak_issue = 0
 var leaks = [leaks_top, leaks_bot];
 
+export var max_issue = 16
 
 onready var Fire = preload("res://Fire.tscn")
 onready var Leak = preload("res://Leak.tscn")
 
+signal lose
+
 func _ready():
 	randomize()
 
+func _process(_delta):
+	if(calc_full_issue() >= max_issue):
+		emit_signal("lose")
+
+func calc_issue_weight():
+	return float(calc_full_issue()) / float(max_issue)
+func calc_full_issue():
+	return leak_issue + fire_issue
+
 func spawn_fire():
 	var free_spots = get_free_fire()
+	fire_issue = arr_size - free_spots.size()
 	if free_spots.size() == 0:
 		return
 	var spot = free_spots[randi() % free_spots.size()];
@@ -31,6 +47,7 @@ func spawn_fire():
 
 func spawn_leak():
 	var free_spots : Array = get_free_leak()
+	leak_issue = arr_size - free_spots.size()
 	if free_spots.size() == 0:
 		return
 	var spot = free_spots[randi() % free_spots.size()];

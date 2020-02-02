@@ -23,3 +23,7 @@ func _process(delta):
 	current_km += speed * delta
 	if current_km >= target_km:
 		var _foo = get_tree().change_scene("res://Victory.tscn")
+
+
+func _on_Submarine_lose():
+	var _foo = get_tree().change_scene("res://Lose.tscn")
