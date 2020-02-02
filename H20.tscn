@@ -12,13 +12,16 @@ script = ExtResource( 1 )
 
 [node name="Terminal" parent="." instance=ExtResource( 2 )]
 texture = null
+max_health = 100
+kick_degradation = 25
+time_degradation = 10
 terminal_type = 2
 
 [node name="PercentageDecay" parent="." instance=ExtResource( 3 )]
 z_index = 5
-decay_rate = 1.5
+decay_rate = 1.0
 fill_rate = 35.0
-decay_tick = 1.5
+decay_tick = 0.25
 disabled = true
 
 [node name="HoseHolder" type="Node2D" parent="."]

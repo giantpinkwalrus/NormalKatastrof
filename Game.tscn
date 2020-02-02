@@ -71,6 +71,7 @@ min_travel_speed = 4.0
 script = ExtResource( 2 )
 max_leak_chance = 0.0
 min_leak_chance = 0.0
+max_issue = 9
 
 [node name="Player" parent="Submarine" instance=ExtResource( 3 )]
 position = Vector2( -344.268, -79.913 )
@@ -574,7 +575,7 @@ position = Vector2( -752.268, -42.913 )
 scale = Vector2( 1.26953, 1.33984 )
 z_index = -1
 frames = SubResource( 4 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="PutOut" type="AudioStreamPlayer2D" parent="Submarine"]
