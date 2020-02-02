@@ -60,6 +60,8 @@ func spawn_leak():
 
 func put_out_fire(spot):
 	fires[spot.y][spot.x] = 0
+	$PutOut.pitch_scale = rand_range(0.95, 1.05)
+	$PutOut.play()
 
 func plug_leak(spot):
 	leaks[spot.y][spot.x] = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Submarine.gd" type="Script" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://resources/normal_katastrof.wav" type="AudioStream" id=34]
 [ext_resource path="res://resources/teknikal_problemo.wav" type="AudioStream" id=35]
 [ext_resource path="res://Timer.gd" type="Script" id=36]
+[ext_resource path="res://resources/shhhhhh.wav" type="AudioStream" id=37]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48, 128 )
@@ -573,8 +574,12 @@ position = Vector2( -752.268, -42.913 )
 scale = Vector2( 1.26953, 1.33984 )
 z_index = -1
 frames = SubResource( 4 )
-frame = 1
+frame = 2
 playing = true
+
+[node name="PutOut" type="AudioStreamPlayer2D" parent="Submarine"]
+stream = ExtResource( 37 )
+volume_db = -9.579
 
 [node name="Boat" type="Node2D" parent="."]
 position = Vector2( -311.268, -390.913 )
@@ -619,11 +624,11 @@ stream = ExtResource( 27 )
 stream = ExtResource( 28 )
 
 [node name="FireTimer" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 6.0
 autostart = true
 
 [node name="LeakTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
 autostart = true
 
 [node name="BoatTimer" type="Timer" parent="."]

@@ -18,4 +18,6 @@ func _ready():
 
 func _on_Timer_timeout():
 	var rand = randi() % 7
-	get_node("AudioStreamPlayer2D" + String(rand)).play()
+	var sound = get_node("AudioStreamPlayer2D" + String(rand))
+	(sound as AudioStreamPlayer2D).pitch_scale = rand_range(0.95, 1.05)
+	sound.play()
