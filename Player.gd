@@ -1,9 +1,14 @@
 extends KinematicBody2D
 
 export(int, "Player 1", "Player 2") var controller
-export var SPEED : int = 10000
-export var CLIMB_SPEED : int = 10000
-export var GRAVITY : int = 1000
+export var SPEED : float = 45000
+export var CLIMB_SPEED : float = 25000
+export var GRAVITY : float = 1000
+
+export var accel : float = 2500
+export var drag : float = 500
+var cur_speed : float = 0
+
 var velocity = Vector2();
 var player = "p1_"
 onready var Swoosh = preload("res://Swoosh.tscn")
@@ -79,12 +84,14 @@ func get_input():
 		#NORMAL
 		if Input.is_action_pressed(player + "left"):
 			velocity.x = -SPEED
+			cur_speed = clamp(cur_speed - accel, -SPEED, SPEED);
 			facing = DIR.LEFT
 		elif Input.is_action_pressed(player + "right"):
 			velocity.x = SPEED
+			cur_speed = clamp(cur_speed + accel, -SPEED, SPEED);
 			facing = DIR.RIGHT
 		else:
-			velocity.x = 0
+			cur_speed = cur_speed - drag * sign(cur_speed)
 		if Input.is_action_pressed(player + "down") or Input.is_action_pressed(player + "up") and on_ladder:
 			state = STATE.CLIMBING
 			velocity.y = 0
@@ -168,8 +175,10 @@ func _physics_process(delta):
 	set_carry_point()
 	if state == STATE.CLIMBING:
 		velocity.x = 0
+		cur_speed = 0
 		self.position = Vector2(get_node("../Ladder").position.x, position.y)
-	var _s = move_and_slide(velocity * delta)
+	var move = Vector2(cur_speed * delta, velocity.y * delta)
+	var _s = move_and_slide(move)
 	if item == ITEM.HOSE and hose:
 		handle_hose()
 

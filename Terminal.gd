@@ -9,7 +9,6 @@ export var tick_time : float = 5
 var current_health = max_health
 signal part_broken
 
-
 export(int, "Torpedo", "Periscope", "Water", "Engine", "Sonar", "Ballast Front", "Ballast Back") var terminal_type
 # Called when the node enters the scene tree for the first time.
 func _ready():
