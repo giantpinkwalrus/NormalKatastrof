@@ -13,6 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$Submarine/SceneCamera/ProgressBar.value = current_km / target_km * 100
+	$Submarine/SceneCamera/Progress/Sub.position.x = lerp(-465.268, 506, current_km / target_km)
 	if $Submarine/Engine.is_broken():
 		return
 	var speed = lerp(min_travel_speed, max_travel_speed, $Submarine/Engine.get_weight());
