@@ -16,9 +16,6 @@ onready var CarryHammer = preload("res://CarryHammer.tscn")
 onready var CarryHose = preload("res://CarryHose.tscn")
 onready var Hammer = preload("res://Hammer.tscn")
 
-onready var Char1 = preload("res://resources/char1.png")
-onready var Char2 = preload("res://resources/char2.png")
-
 signal fire_out(fire)
 signal plug_leak(leak)
 
@@ -48,12 +45,8 @@ var on_ladder : bool = false
 func _ready():
 	if controller == 0:
 		player = "p1_"
-		$PlayerSprite.texture = Char1
 	else:
 		player = "p2_"
-		$PlayerSprite.texture = Char2
-	$PlayerSprite.position.y = -13
-	$PlayerSprite.scale = Vector2(0.092, 0.092);
 
 func instatiate_swoosh():
 	var s = Swoosh.instance()
@@ -80,6 +73,7 @@ func carry_hose():
 	$Carry.add_child(hose)
 
 func get_input():
+	$PlayerSprite.play(player + "run")
 	if state == STATE.RUNNING:
 		#NORMAL
 		if Input.is_action_pressed(player + "left"):
@@ -92,6 +86,7 @@ func get_input():
 			facing = DIR.RIGHT
 		else:
 			cur_speed = cur_speed - drag * sign(cur_speed)
+			$PlayerSprite.play(player + "idle")
 		if Input.is_action_pressed(player + "down") or Input.is_action_pressed(player + "up") and on_ladder:
 			state = STATE.CLIMBING
 			velocity.y = 0
