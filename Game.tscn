@@ -535,7 +535,7 @@ position = Vector2( -752.268, -42.913 )
 scale = Vector2( 1.26953, 1.33984 )
 z_index = -1
 frames = SubResource( 4 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="Boat" type="Node2D" parent="."]
@@ -590,6 +590,12 @@ rotation = 3.12948
 scale = Vector2( -0.473, 0.473 )
 z_index = -2
 texture = ExtResource( 19 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -0.268005, 0.0870056 )
+z_index = -9
+color = Color( 0.168627, 0.2, 0.431373, 1 )
+polygon = PoolVector2Array( -872.268, -581.913, 494.732, -584.913, 482.732, 227.087, -912.268, 223.087 )
 [connection signal="lose" from="Submarine" to="." method="_on_Submarine_lose"]
 [connection signal="fire_out" from="Submarine/Player" to="Submarine" method="_on_Player_fire_out"]
 [connection signal="plug_leak" from="Submarine/Player" to="Submarine" method="_on_Player_plug_leak"]

@@ -28,7 +28,6 @@ func _ready():
 
 func _process(_delta):
 	var angle = lerp(-115, 115, calc_issue_weight())
-	print(angle)
 	$KatastrofMeter/Pointer.rotation_degrees = angle
 	if(calc_full_issue() >= max_issue):
 		emit_signal("lose")
